@@ -1,0 +1,23 @@
+# Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment directory
+venv/
+.venv/ # Include if you might use .venv as well
+
+# Sensitive Firebase service account key
+# This file contains credentials and should NEVER be committed to Git.
+talent-scout-bot-001-firebase-adminsdk-fbsvc-ee6041a06a.json
+
+# Environment variables file (if you use one, e.g., for API keys)
+.env
+
+# Streamlit specific generated files
+.streamlit/
+
+# Logs and temporary files
+*.log
+*.tmp
