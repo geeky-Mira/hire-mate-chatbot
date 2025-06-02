@@ -24,8 +24,8 @@ To run the chatbot locally, follow these steps:
 **Clone Repository:**
 ```Bash
 
-git clone <your-repository-url>
-cd <your-repository-name>
+git clone https://github.com/geeky-Mira/talent-scout-chatbot.git
+cd https://github.com/geeky-Mira/talent-scout-chatbot.git
 ```
 **Create Virtual Environment & Install Dependencies:**
 ```Bash
