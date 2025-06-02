@@ -1,0 +1,108 @@
+/* General Body Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Streamlit specific adjustments */
+.stApp {
+    background-color: #705896; /* Dark background similar to Streamlit dark theme */
+    color: #FAFAFA; /* Light text color */
+}
+
+/* Chat Message Styling */
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    max-width: 80%;
+    word-wrap: break-word;
+    font-size: 0.95rem;
+}
+
+.user-message {
+    background-color: #68c24f; /* Green for user messages */
+    color: white;
+    align-self: flex-end; /* Align to the right in flex container */
+    margin-left: auto; /* Push to the right */
+    border-bottom-right-radius: 2px; /* Slightly adjust corner for user message */
+}
+
+.bot-message {
+    background-color: #262730; /* Darker gray for bot messages */
+    color: #FAFAFA;
+    align-self: flex-start; /* Align to the left */
+    margin-right: auto; /* Push to the left */
+    border: 1px solid #3F424D; /* Subtle border for bot messages */
+    border-bottom-left-radius: 2px; /* Slightly adjust corner for bot message */
+}
+
+/* Streamlit chat input adjustments */
+.stTextInput > div > div > input {
+    background-color: #53545d;
+    color: #FAFAFA;
+    border: 1px solid #3F424D;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+}
+
+/* Buttons */
+.stButton > button {
+    background-color: #31333F;
+    color: #FAFAFA;
+    border: 1px solid #3F424D;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-weight: bold;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.stButton > button:hover {
+    background-color: #4F5466;
+    border-color: #6D7280;
+}
+
+/* Info/Warning/Error boxes */
+.stAlert {
+    border-radius: 0.5rem;
+}
+
+/* Target the Streamlit container for the chat panel */
+/* IMPORTANT: Replace 'st-emotion-cache-fzvq8p' with the actual class name you find in your browser's developer tools for the st.container */
+.st-emotion-cache-3fcrb9  { /* This is a placeholder, find your exact class! */
+    background-color: black; /* Or #000000 */
+    border: 1px solid #3F424D; /* Keep your existing border style if you like it */
+    border-radius: 0.5rem; /* Keep your existing border-radius if you like it */
+    /* If the scrollbar background is still not black, you might need: */
+    /* overflow-y: auto; */
+    /* -webkit-overflow-scrolling: touch; */
+}
+
+/* Also, ensure your .chat-background-area doesn't override this, or set it to transparent */
+.chat-background-area {
+    background-color: transparent; /* Make the inner background transparent so the container's black shows through */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    padding: 0; /* Remove padding if you want messages to be directly on the black background */
+}
+
+/* .st-emotion-cache-q7ts7m{
+    background-color: black; 
+    border: 1px solid #3F424D; 
+    border-radius: 0.5rem;
+} */
+
+#candidate-information{
+    background-color: #262730; /* Dark background for candidate information */
+    color: #FAFAFA; /* Light text color */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    border: 1px solid #3F424D; /* Subtle border for candidate information */
+}
+
+.info{
+    text-align: center;
+    font-size: medium;
+}
