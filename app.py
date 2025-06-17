@@ -2,7 +2,7 @@ import streamlit as st
 import json
 import re
 import os
-st.set_page_config(page_title="TalentScout Hiring Assistant", layout="wide")
+st.set_page_config(page_title="HireMate Hiring Assistant", layout="wide")
 from llm_service import call_gemini_api 
 from firebase_service import initialize_firebase, save_candidate_profile
 
@@ -25,7 +25,7 @@ def main():
         st.error(f"Error loading CSS: {e}")
 
     # Page Title
-    st.title("🤖 TalentScout Hiring Assistant")
+    st.title("🤖 HireMate Hiring Assistant")
 
     # Firebase Configuration
     app_id = os.getenv('__app_id', 'talent-scout-app') 
@@ -44,7 +44,7 @@ def main():
     if "info_stage" not in st.session_state:
         st.session_state.info_stage = "name"
         st.session_state.chat_history.append(
-            {"sender": "bot", "message": "Hello! Welcome to TalentScout’s Hiring Assistant. Please note: All data you provide will be used solely for this simulated hiring process and handled with care."}
+            {"sender": "bot", "message": "Hello! Welcome to HireMate’s Hiring Assistant. Please note: All data you provide will be used solely for this simulated hiring process and handled with care."}
         )
         st.session_state.chat_history.append(
             {"sender": "bot", "message": "May I have your full name? (You can type 'exit' anytime to end the conversation)"}
@@ -122,7 +122,7 @@ def main():
 
     # Right Column: Chat‐Style Interaction or Stage‐Specific Widgets
     with col2:
-        st.subheader("Chat with TalentScout AI")
+        st.subheader("Chat with HireMate AI")
         chat_container = st.container(height=500, border=True)
 
         with chat_container:
@@ -228,7 +228,7 @@ def main():
         elif chat_input_disabled:
              st.chat_input("Type your message here...", disabled=True, key="main_chat_input_widget_disabled")
 
-        st.markdown("<div style='position: relative; bottom: 0; width: 100%; text-align: left; padding-top: 20px;'><p style='font-size: 0.75rem; color: #9CA3AF;'>&copy; 2024 TalentScout. Powered by Gemini & Firebase</p></div>", unsafe_allow_html=True)
+        st.markdown("<div style='position: relative; bottom: 0; width: 100%; text-align: left; padding-top: 20px;'><p style='font-size: 0.75rem; color: #9CA3AF;'>&copy; 2024 HireMate. Powered by Gemini & Firebase</p></div>", unsafe_allow_html=True)
 
     # Handle Pending Operations
     if st.session_state.pending_operation:
@@ -239,7 +239,7 @@ def main():
             try:
                 # UPDATED PROMPT: Includes role, experience, difficulty, and coding question format.
                 prompt = (
-                    f"You are a technical interviewer for TalentScout. Your task is to generate 3 questions for an initial screening. "
+                    f"You are a technical interviewer for HireMate. Your task is to generate 3 questions for an initial screening. "
                     f"The candidate is applying for the role of '{info['desiredPositions']}' with {info['yearsExperience']} years of experience. "
                     f"Their self-declared tech stack is: \"{info['techStack']}\".\n\n"
                     "INSTRUCTIONS:\n"
@@ -314,7 +314,7 @@ def main():
             try:
                 responses_str = "\n\n".join([f"Q: {r['question']}\nA: {r['answer']}" for r in info['technicalResponses']])
                 feedback_prompt = (
-                    "You are a helpful and constructive career coach for TalentScout. "
+                    "You are a helpful and constructive career coach for HireMate. "
                     f"A candidate named {info['fullName']} has applied for the role of '{info['desiredPositions']}' and completed an initial screening.\n"
                     f"Here are their answers to the technical questions:\n\n{responses_str}\n\n"
                     "Your task is to provide brief, constructive feedback. "
@@ -379,7 +379,7 @@ def main():
         
         if not handled_as_stage_specific and not st.session_state.pending_operation:
             try:
-                contextual_llm_prompt = "You are TalentScout, a helpful AI hiring assistant. Respond courteously and contextually to the user's *last* message in the history. If the question is outside your scope, politely state that you cannot answer. Do not deviate from your purpose."
+                contextual_llm_prompt = "You are HireMate, a helpful AI hiring assistant. Respond courteously and contextually to the user's *last* message in the history. If the question is outside your scope, politely state that you cannot answer. Do not deviate from your purpose."
                 bot_msg = call_gemini_api(contextual_llm_prompt, st.session_state.chat_history)
                 next_stage = current_stage 
             except Exception as e:
