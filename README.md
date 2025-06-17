@@ -1,7 +1,7 @@
-# 🤖 TalentScout Hiring Assistant Chatbot
+# 🤖 HireMate Hiring Assistant Chatbot
 
 ## Project Overview
-The TalentScout Hiring Assistant is an AI-powered chatbot designed for initial candidate screening in tech recruitment. It efficiently gathers essential candidate information and generates personalized technical questions based on their declared tech stack, ensuring a streamlined and context-aware experience.
+The HireMate Hiring Assistant is an AI-powered chatbot designed for initial candidate screening in tech recruitment. It efficiently gathers essential candidate information and generates personalized technical questions based on their declared tech stack, ensuring a streamlined and context-aware experience.
 
 ## Core Features:
 
@@ -75,4 +75,4 @@ Prompts are designed to guide the LLM for specific outcomes:
 
 ## Deliverables
 * **Documentation:** This README.md file.
-* **Demo:** [[Link ](https://talent-scout-chatbot.streamlit.app/)]
+* **Demo:** [[Link ](https://hire-mate-chatbot.streamlit.app/)]
