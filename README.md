@@ -1,78 +1,115 @@
-# 🤖 HireMate Hiring Assistant Chatbot
+# 🤖 HireMate — AI-Powered Hiring Assistant Chatbot
 
-## Project Overview
-The HireMate Hiring Assistant is an AI-powered chatbot designed for initial candidate screening in tech recruitment. It efficiently gathers essential candidate information and generates personalized technical questions based on their declared tech stack, ensuring a streamlined and context-aware experience.
+## 🧭 Overview
 
-## Core Features:
+**HireMate** is an AI-driven hiring assistant chatbot designed to automate **initial candidate screening** in tech recruitment. It interacts conversationally to collect candidate data, generate **personalized technical questions** based on the declared tech stack, and store responses in a Firebase backend — making the hiring process smarter, faster, and more consistent.
 
-* **Information Collection**: Gathers candidate's name, contact, location, experience, desired roles, and tech stack.
-* **Dynamic Technical Assessment:** Generates 3 tailored technical questions using an LLM, based on the candidate's declared technologies.
-* **Contextual Interaction:** Maintains conversation flow for coherent user experience and handles general follow-up questions.
-* **Profile Management:** Allows candidates to review and submit their collected data to a Firebase backend.
+---
 
-## Purpose of Prompting
+## 🚀 Core Features
+
+* **🗂️ Smart Data Collection:** Gathers candidate's name, contact, location, experience, desired roles, and tech stack.
+* **🧠 Dynamic Technical Assessment:** Generates 3 tailored technical questions using an LLM, based on the candidate's declared technologies.
+* **💬 Contextual Interaction:** Maintains conversation flow for coherent user experience and handles general follow-up questions.
+* **☁️ Profile Management:** Allows candidates to review and submit their collected data to a Firebase backend.
+
+---
+
+## 🎯 Purpose of Prompting
+
 Effective prompt engineering guides the Large Language Model (LLM) to:
 
 * **Gather Information:** Collect candidate details accurately and conversationally.
 * **Generate Questions:** Create specific, relevant technical questions from the tech stack.
 * **Maintain Context:** Ensure coherent interactions and appropriate responses to general queries, staying within the chatbot's role.
 
-## Installation Instructions
+---
+
+## ⚙️ Installation & Setup
+
 To run the chatbot locally, follow these steps:
 
-## Setup
-**Clone Repository:**
-```Bash
+### 1️⃣ Clone Repository
 
+```bash
 git clone https://github.com/geeky-Mira/talent-scout-chatbot.git
-cd https://github.com/geeky-Mira/talent-scout-chatbot.git
+cd talent-scout-chatbot
 ```
-**Create Virtual Environment & Install Dependencies:**
-```Bash
 
+### 2️⃣ Create Virtual Environment & Install Dependencies
+
+```bash
 python -m venv venv
 # On Windows: .\venv\Scripts\activate
 # On macOS/Linux: source venv/bin/activate
 pip install -r requirements.txt
 ```
-**Set Environment Variables:**
+
+### 3️⃣ Set Environment Variables
+
 * **GEMINI_API_KEY:** Your Google Gemini API key from Google AI Studio.
-* **FIREBASE_CONFIG_B64:** Base64 encoded content of your Firebase service account JSON file. (Refer to detailed README version for how to encode the JSON.)
-* Store these in a .env file (add .env to .gitignore).
+* **FIREBASE_CONFIG_B64:** Base64 encoded content of your Firebase service account JSON file.
+  *(Refer to detailed README for encoding instructions.)*
+* Store these in a `.env` file (and add `.env` to `.gitignore`).
 
-**Run Application:**
-```Bash
+### 4️⃣ Run Application
 
+```bash
 streamlit run app.py
 ```
-## Usage Guide
+
+---
+
+## 💡 Usage Guide
+
 * **Start:** Chatbot greets you and asks for your name.
-* **Input Details:** Follow prompts to provide your name, email, location, phone number, years of experience, and desired position.
-* **Declare Tech Stack:** Enter your primary tech stack (e.g., "Python, React, AWS").
-* **Technical Assessment:** Type "OK" or "Yes" to begin 3 technical questions. Provide your answers for each.
-* **Submit Profile:** Review your information on the left panel, then click "✅ Save and Submit Profile".
-* **Follow-up:** Ask general questions about the hiring process.
-* **Exit:** Type exit or quit to end the conversation.
+* **Input Details:** Provide name, email, location, phone, years of experience, and desired position.
+* **Declare Tech Stack:** Enter your primary stack (e.g., "Python, React, AWS").
+* **Technical Assessment:** Type `OK` or `Yes` to begin 3 technical questions and respond to each.
+* **Submit Profile:** Review details on the left panel, then click **✅ Save and Submit Profile**.
+* **Follow-up:** Ask questions about the hiring process or your submission.
+* **Exit:** Type `exit` or `quit` to end the session.
 
-## Technical Details
-* **Frontend:** Streamlit (app.py, style.css)
-* **LLM:** Google Gemini (gemini-2.0-flash-001) via llm_service.py
-* **Backend:** Google Firebase Firestore via firebase_service.py
-* **Modular Design:** Separates UI logic (app.py), LLM interaction (llm_service.py), and database operations (firebase_service.py) for maintainability.
-* **State Management:** st.session_state is used to persist conversational context and candidate data across Streamlit reruns.
+---
 
-## Prompt Design Highlights
-Prompts are designed to guide the LLM for specific outcomes:
+## 🧱 Technical Details
 
-* **Technical Questions:** Instructs LLM to act as an interviewer, generate 3 concise questions based on provided tech stack, focusing on fundamentals.
-* **Contextual Responses:** Guides the LLM to respond helpfully to general queries (e.g., about hiring process, profile status) while maintaining its role as a hiring assistant and gracefully declining out-of-scope questions.
+* **Frontend:** Streamlit (`app.py`, `style.css`)
+* **LLM Engine:** Google Gemini (`gemini-2.0-flash-001`) via `llm_service.py`
+* **Backend:** Firebase Firestore via `firebase_service.py`
+* **Architecture:** Modular separation for UI, LLM, and backend layers.
+* **State Management:** `st.session_state` persists conversation data across Streamlit reruns.
 
-## Challenges & Solutions
-* **Context in Streamlit:** Managed using st.session_state to store and retrieve conversation history and candidate data.
-* **LLM Dual Purpose:** Implemented distinct prompts and conditional logic in app.py to handle both structured data collection and open-ended queries.
-* **Asynchronous Operations:** Used st.session_state.is_loading and st.session_state.pending_operation flags to manage UI state during LLM calls and database saves, preventing race conditions.
-* **Secure Credentials:** Ensured API keys and Firebase config are loaded via environment variables (and Base64 encoded for Firebase JSON).
+---
 
-## Deliverables
-* **Documentation:** This README.md file.
-* **Demo:** [[Link ](https://hire-mate-chatbot.streamlit.app/)]
+## 🧠 Prompt Design Highlights
+
+Prompts are carefully structured to guide the LLM for specific outcomes:
+
+* **Technical Questions:** Directs the model to act as a hiring interviewer, generating concise, stack-specific questions focusing on fundamentals.
+* **Contextual Responses:** Guides the chatbot to handle general or clarifying questions gracefully while maintaining its role.
+
+---
+
+## 🛠️ Challenges & Solutions
+
+* **Context Retention in Streamlit:** Managed via `st.session_state` to store and reuse chat history.
+* **Dual-Purpose LLM:** Used distinct prompt templates and conditional logic in `app.py` for structured vs open-ended conversations.
+* **Async Operations:** Flags like `is_loading` and `pending_operation` manage UI state and prevent race conditions during async LLM/database calls.
+* **Secure Credentials:** API keys and Firebase configs handled via environment variables (Firebase JSON Base64 encoded).
+
+---
+
+## 📦 Deliverables
+
+* **Documentation:** `README.md`
+* **Live Demo:** [HireMate Chatbot](https://hire-mate-chatbot.streamlit.app/)
+
+---
+
+## 👩‍💻 Author
+
+**Developed by:** [@geeky-Mira](https://github.com/geeky-Mira)
+Empowering intelligent automation through conversational AI.
+
+---
